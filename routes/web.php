@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CursoController;
 use App\Http\Controllers\NivelController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,3 +13,4 @@ Route::get('/', function () {
 // Route::post('/nivels',[NivelController::class,'store'])->name('nivels.store');
 
 Route::resource('/nivels', NivelController::class);
+Route::resource('/cursos', CursoController::class);

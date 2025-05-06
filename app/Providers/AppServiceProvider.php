@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Repositories\Contracts\CursoRepositoryInterface;
 use App\Repositories\Contracts\NivelRepositoryInterface;
+use App\Repositories\Eloquent\CursoRepository;
 use App\Repositories\Eloquent\NivelRepository;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(NivelRepositoryInterface::class, NivelRepository::class);
+        $this->app->bind(CursoRepositoryInterface::class, CursoRepository::class);
     }
 
     /**
