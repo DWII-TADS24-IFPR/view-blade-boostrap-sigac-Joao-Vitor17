@@ -7,6 +7,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/nivels',[NivelController::class,'index'])->name('nivels.index');
-Route::get('/nivels/create',[NivelController::class,'create']);
-Route::post('/nivels',[NivelController::class,'store'])->name('nivels.store');
+// Route::get('/nivels',[NivelController::class,'index'])->name('nivels.index');
+// Route::get('/nivels/create',[NivelController::class,'create']);
+// Route::post('/nivels',[NivelController::class,'store'])->name('nivels.store');
+
+Route::resource('/nivels', NivelController::class);

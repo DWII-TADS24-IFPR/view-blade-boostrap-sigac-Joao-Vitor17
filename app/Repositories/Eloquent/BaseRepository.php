@@ -19,6 +19,7 @@ class BaseRepository implements BaseRepositoryInterface
     }
     
     public function find($id) {
+        return $this->model->find($id);
     }
     
     public function create(array $dados) {
@@ -26,8 +27,18 @@ class BaseRepository implements BaseRepositoryInterface
     }
     
     public function update($id, array $dados) {
+        $item = $this->find($id);
+        if($item) {
+            $item->update($dados);
+        }
+        return $item;
     }
     
     public function delete($id) {
+        $item = $this->find($id);
+        if($item) {
+            $item->delete();
+        }
+        return $item;
     }
 }

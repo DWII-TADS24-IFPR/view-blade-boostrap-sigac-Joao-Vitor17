@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Nivel;
 use App\Repositories\Contracts\NivelRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -14,64 +15,60 @@ class NivelController extends Controller
         $this->nivelRepositorio = $nivelRepositorio;
     }
 
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $nivels = $this->nivelRepositorio->all();
         return view('nivels.index')->with('nivels', $nivels);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('nivels.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
+        $request->validate(
+            ['nome' => 'required|string|min:3']
+        );
+
         $this->nivelRepositorio->create([
             'nome' => $request->nome,
         ]);
 
-        return redirect()->route('nivels.index');
+        return redirect()->route('nivels.index')->with(['success' => 'Nivel '.$request->nome.' criado com sucesso!!']);
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        //
+        $nivel = $this->nivelRepositorio->find($id);
+        return view('nivels.show')->with(['nivel' => $nivel]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+        $nivel = $this->nivelRepositorio->find($id);
+        return view('nivels.edit')->with(['nivel' => $nivel]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-        //
+        $nivel = $request->validate(
+            ['nome'=>'required|string|min:3']
+        );
+        
+        $nivel = $this->nivelRepositorio->update($id, $nivel);
+
+        if(isset($nivel)) {
+            return redirect()->route('nivels.index')->with(['success' => 'Nivel '.$nivel->nome.' atualizado com sucesso!!']);
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+        $nivel = $this->nivelRepositorio->delete($id);
+        if(isset($nivel)) {
+            return redirect()->route('nivels.index')->with(['success' => 'Nivel '.$nivel->nome.' excluido com sucesso!!']);
+        }
     }
 }
