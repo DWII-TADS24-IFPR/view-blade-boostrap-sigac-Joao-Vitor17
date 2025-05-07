@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\NivelController;
 use Illuminate\Support\Facades\Route;
@@ -14,3 +15,4 @@ Route::get('/', function () {
 
 Route::resource('/nivels', NivelController::class);
 Route::resource('/cursos', CursoController::class);
+Route::resource('/categorias', CategoriaController::class);
