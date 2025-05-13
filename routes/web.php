@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\DocumentoController;
@@ -20,3 +21,4 @@ Route::resource('/cursos', CursoController::class);
 Route::resource('/categorias', CategoriaController::class);
 Route::resource('/turmas', TurmaController::class);
 Route::resource('/documentos', DocumentoController::class);
+Route::resource('/alunos', AlunoController::class);
