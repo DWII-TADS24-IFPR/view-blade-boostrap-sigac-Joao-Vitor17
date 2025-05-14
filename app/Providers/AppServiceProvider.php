@@ -6,6 +6,7 @@ use App\Repositories\Contracts\AlunoRepositoryInterface;
 use App\Repositories\Contracts\CategoriaRepositoryInterface;
 use App\Repositories\Contracts\ComprovanteRepositoryInterface;
 use App\Repositories\Contracts\CursoRepositoryInterface;
+use App\Repositories\Contracts\DeclaracaoRepositoryInterface;
 use App\Repositories\Contracts\DocumentoRepositoryInterface;
 use App\Repositories\Contracts\NivelRepositoryInterface;
 use App\Repositories\Contracts\TurmaRepositoryInterface;
@@ -13,6 +14,7 @@ use App\Repositories\Eloquent\AlunoRepository;
 use App\Repositories\Eloquent\CategoriaRepository;
 use App\Repositories\Eloquent\ComprovanteRepository;
 use App\Repositories\Eloquent\CursoRepository;
+use App\Repositories\Eloquent\DeclaracaoRepository;
 use App\Repositories\Eloquent\DocumentoRepository;
 use App\Repositories\Eloquent\NivelRepository;
 use App\Repositories\Eloquent\TurmaRepository;
@@ -32,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(DocumentoRepositoryInterface::class, DocumentoRepository::class);
         $this->app->bind(AlunoRepositoryInterface::class, AlunoRepository::class);
         $this->app->bind(ComprovanteRepositoryInterface::class, ComprovanteRepository::class);
+        $this->app->bind(DeclaracaoRepositoryInterface::class, DeclaracaoRepository::class);
     }
 
     /**
