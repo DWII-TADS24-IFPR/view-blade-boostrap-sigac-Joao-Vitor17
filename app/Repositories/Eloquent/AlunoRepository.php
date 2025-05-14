@@ -3,9 +3,7 @@
 namespace App\Repositories\Eloquent;
 
 use App\Models\Aluno;
-use App\Models\Curso;
 use App\Repositories\Contracts\AlunoRepositoryInterface;
-use App\Repositories\Contracts\CursoRepositoryInterface;
 
 class AlunoRepository extends BaseRepository implements AlunoRepositoryInterface
 {

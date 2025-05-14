@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ComprovanteController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\NivelController;
@@ -22,3 +23,4 @@ Route::resource('/categorias', CategoriaController::class);
 Route::resource('/turmas', TurmaController::class);
 Route::resource('/documentos', DocumentoController::class);
 Route::resource('/alunos', AlunoController::class);
+Route::resource('/comprovantes', ComprovanteController::class);
